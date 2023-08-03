@@ -22,22 +22,23 @@ let isHover = ref(false);
             v-if="isHover"
             :class="isHover ? 'bg-black bg-opacity-40' : ''"
             class="absolute w-full h-full z-50 flex items-center justify-around text-lg font-extrabold text-white"
+            @click="$emit('selectedPost', postByUser)"
         >
             <div class="flex items-center justify-around w-[50%]">
                 <div class="flex items-center justify-center">
                     <Heart fillColor="#FFFFFF" :size="30" />
-                    <div class="pl-1">40</div>
+                    <div class="pl-1">{{postByUser.likes.length}}</div>
                 </div>
                 <div class="flex items-center justify-center">
                     <Comment fillColor="#FFFFFF" :size="30" />
-                    <div class="pl-1">16</div>
+                    <div class="pl-1">{{postByUser.comments.length}}</div>
                 </div>
             </div>
         </div>
 
         <img
             class="aspect-square mx-auto z-0 object-cover cursor-pointer"
-            src="https://picsum.photos/id/57/800/800"
+            :src="postByUser.file"
         />
     </div>
 </template>

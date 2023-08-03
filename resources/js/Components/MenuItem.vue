@@ -13,7 +13,7 @@ import Menu from "vue-material-design-icons/Menu.vue";
 const props = defineProps({ iconString: String });
 const { iconString } = toRefs(props);
 
-// const user = usePage().props.auth.user;
+const user = usePage().props.auth.user;
 
 let icon = null;
 
@@ -36,7 +36,7 @@ if (iconString.value === "Log out") icon = Menu;
                 v-if="iconString === 'Profile'"
                 :class="{ 'mr-1': iconString === 'Profile' }"
                 class="rounded-full ml-[2px] w-[30px] cursor-pointer"
-                src="https://picsum.photos/id/50/300/320"
+        :src="user.file"
             />
             <component v-else :is="icon" fillColor="#000000" :size="36" />
             <span

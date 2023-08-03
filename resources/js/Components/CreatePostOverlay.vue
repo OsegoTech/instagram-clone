@@ -7,7 +7,7 @@ import ArrowLeft from "vue-material-design-icons/ArrowLeft.vue";
 import MapMarkerOutline from "vue-material-design-icons/MapMarkerOutline.vue";
 import ChevronDown from "vue-material-design-icons/ChevronDown.vue";
 
-// const user = usePage().props.auth.user;
+const user = usePage().props.auth.user;
 
 const emit = defineEmits(["close"]);
 
@@ -93,6 +93,7 @@ const closeOverlay = () => {
                 />
                 <div class="text-lg font-extrabold">New reel</div>
                 <button
+                @click="$event => createPostFunc()"
                     class="text-lg text-blue-500 hover:text-gray-900 font-extrabold"
                 >
                     Share
@@ -144,10 +145,10 @@ const closeOverlay = () => {
                         <div class="flex items-center">
                             <img
                                 class="rounded-full w-[38px] h-[38px]"
-                                src="https://picsum.photos/id/50/300/320"
+                                :src="user.file"
                             />
                             <div class="ml-4 font-extrabold text-[15px]">
-                                NAME HERE
+                                {{user.name}}
                             </div>
                         </div>
                     </div>
